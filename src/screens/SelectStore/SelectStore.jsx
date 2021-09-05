@@ -10,15 +10,13 @@ export default function SelectStore() {
   
   const allStores = useSelector(selectAllStores);
   
-  const selectedStore = useSelector(selectSelectedStore);
-  
   return (
     <div className={S.container}>
       <h1>SELECT STORE</h1>
       <div className={S.stores}>
         {
           allStores.map(store => (
-            <StoreCard title={store.store_name} products={store.relevantProducts} key={store.id} />
+            <StoreCard store={store} key={store.id} />
           ))
         }
       </div>

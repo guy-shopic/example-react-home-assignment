@@ -17,6 +17,7 @@ function pickRelevantProducts(store, requiredProducts) {
 }
 
 const getRelevantStores = (stores, requiredProducts) =>
+  requiredProducts &&
   stores
     .filter((store) =>
       store.available_products.some((availableProduct) =>
@@ -29,14 +30,10 @@ const getRelevantStores = (stores, requiredProducts) =>
 export const selectAllStores = (state) =>
   getRelevantStores(
     state.stores.allStores,
-    selectSelectedClient(state).products
+    state.clients.selectedClient ? selectSelectedClient(state).products : []
   );
 
-export function selectSelectedStore(state) {
-  // debugger;
-
-  return state.stores.selectedStore;
-}
+export const selectSelectedStore = (state) => state.stores.selectedStore;
 
 // REDUCERS
 const setAllStoresReducer = (state, { payload }) => ({
@@ -44,14 +41,10 @@ const setAllStoresReducer = (state, { payload }) => ({
   allStores: payload,
 });
 
-function setSelectedStoreReducer(state, { payload }) {
-  debugger;
-
-  return {
-    ...state,
-    selectedStore: payload,
-  };
-}
+const setSelectedStoreReducer = (state, { payload }) => ({
+  ...state,
+  selectedStore: payload,
+});
 
 export const storesSlice = createSlice({
   name: "stores",

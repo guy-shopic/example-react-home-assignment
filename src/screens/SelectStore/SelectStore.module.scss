@@ -1,13 +1,34 @@
 .container {
-  background-color: lightcoral;
+  background-color: lightsalmon;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  h1 {
+    flex: 1;
+  }
 
   .stores {
+
+    flex: 20;
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 80%;
     gap: 2rem;
     padding: 1rem;
 
-    
+    overflow-y: scroll;
+
+    .selected {
+      background-color: cadetblue;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

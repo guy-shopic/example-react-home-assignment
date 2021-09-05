@@ -14,7 +14,14 @@ export const SCREENS = [{
 },{
   title: 'Summary',
   screen: 'summary',
-  enabled: () => false
+  enabled: (state) => {
+    
+    console.log('client - ' + !!state.clients.selectedClient);
+    console.log('store  - ' + !!state.stores.selectedStore);
+    console.log('- - - - - - - - - - -');
+    
+    return !!state.clients.selectedClient && !!state.stores.selectedStore
+  }
 }];
 
 export const SCREEN_NAME_TO_COMPONENT = {
