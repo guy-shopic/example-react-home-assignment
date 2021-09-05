@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { clientsSlice, navigationSlice } from "./slices";
+import { clientsSlice, navigationSlice, storesSlice } from "./slices";
 
 
 
 export default configureStore({
   reducer: {
+    clients: clientsSlice,
     navigation: navigationSlice,
-    clients: clientsSlice
+    stores: storesSlice
   }
 })

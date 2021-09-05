@@ -15,9 +15,7 @@ export default function SelectClient() {
   const selectedClient = useSelector(selectSelectedClient);
   
   function clientSelected(ev) {
-    
     dispatch(setSelectedClient(ev.target.value));
-
   }
   
   return (
@@ -25,7 +23,7 @@ export default function SelectClient() {
       <h1>select client</h1>
       <FormControl>
         <InputLabel>Select Client</InputLabel>
-        <Select onChange={clientSelected} value={selectedClient ? selectedClient.id : null}>
+        <Select onChange={clientSelected} value={selectedClient ? selectedClient.id : ''}>
           {
             activeClients.map(client => (
               <MenuItem key={client.id} value={client.id}>{`${client.first_name} ${client.last_name}`}</MenuItem>
@@ -35,7 +33,7 @@ export default function SelectClient() {
         <div className={S.products}>
           {
             selectedClient && selectedClient.products.map(product => (
-              <Chip key={product} label={product} color="primaryr" variant="outlined" />
+              <Chip key={product} label={product} color="primary" variant="outlined" />
             ))
           }
         </div>
